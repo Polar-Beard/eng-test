@@ -24,7 +24,7 @@ public class HomeController extends Controller {
             throws InterruptedException, ExecutionException{
 
         if(pageNumber * USERS_PER_PAGE > totalUsers || pageNumber < 1){
-          return CompletableFuture.supplyAsync(() -> notFound());
+          return CompletableFuture.supplyAsync(() -> notFound(notfound.render()));
         }
 
         int offset = calculateOffset(pageNumber);
@@ -57,11 +57,9 @@ public class HomeController extends Controller {
     }
 
     private User processUserJson(JsonNode jsonNode){
-      User user = new User();
-      user.setId(jsonNode.findValue("id").textValue());
-      user.setCreatedDate(jsonNode.findValue("createdTs").textValue());
-      user.setLastModifiedDate(jsonNode.findValue("lastModifiedTs").textValue());
-
+      User user = new User(jsonNode.findValue("id").textValue(),
+                           jsonNode.findValue("createdTs").textValue(),
+                           jsonNode.findValue("lastModifiedTs").textValue());
       return user;
     }
 

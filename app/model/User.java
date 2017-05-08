@@ -1,31 +1,25 @@
 package model;
 
 public class User{
-    private String id;
-    private String createdDate;
-    private String lastModifiedDate;
+  private final String id;
+  private final String createdDate;
+  private final String lastModifiedDate;
 
-    public void setId(String id){
-      this.id = id;
-    }
+  public User(String id, String createdDate, String lastModifiedDate){
+    this.id = id;
+    this.createdDate = createdDate;
+    this.lastModifiedDate = lastModifiedDate;
+  }
 
-    public String getId(){
-      return id;
-    }
+  public String getId(){
+    return id;
+  }
 
-    public void setCreatedDate(String createdDate){
-      this.createdDate = createdDate;
-    }
+  public String getCreatedDate(){
+    return createdDate;
+  }
 
-    public String getCreatedDate(){
-      return createdDate;
-    }
-
-    public void setLastModifiedDate(String lastModifiedDate){
-      this.lastModifiedDate = lastModifiedDate;
-    }
-
-    public String getLastModifiedDate(){
-      return lastModifiedDate;
-    }
+  public String getLastModifiedDate(){
+    return lastModifiedDate;
+  }
 }
