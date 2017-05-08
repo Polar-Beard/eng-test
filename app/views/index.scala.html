@@ -1,0 +1,33 @@
+@import model.User
+@(previous: String, next: String, users:List[User])
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <table>
+    <tr>
+      <th>User Id</th>
+      <th>Created Date</th>
+      <th>Last Modified Date</th>
+    </tr>
+    @for(user <- users) {
+      <tr>
+        <td>@user.getId()</td>
+        <td>@user.getCreatedDate()</td>
+        <td>@user.getLastModifiedDate()</td>
+      </tr>
+    }
+    <tr>
+      <td>
+        @if(previous != null){
+          <a href="@previous">Previous</a>
+        }
+      </td>
+      <td></td>
+      <td>
+        @if(next != null){
+          <a href="@next">Next</a>
+        }
+      </td>
+    </table>
+  </body>
+  </html>
